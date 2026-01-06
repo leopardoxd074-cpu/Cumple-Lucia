@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CumpleañosBB</title>
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+
+<body>
+
+  <div id="contenedor-web">
+
+    <!-- ESCENA 1: OJOS -->
+    <div id="escena-ojos" class="escena escena-ojos">
+      <div id="pita-zona" class="interactivo" onclick="encenderLuces()">
+        <div id="cordon"></div>
+        <div id="tirador"></div>
+        <div id="globo-ayuda" class="oculto">Jala para prender las luces</div>
+      </div>
+    </div>
+
+    <!-- ESCENA 2: CONCIERTO -->
+    <div id="escena-concierto" class="escena escena-concierto oculto">
+
+      <h1 id="texto-sorpresa" style="display:none;">🎆 SORPRESA 🎆</h1>
+      <h1 id="texto-feliz" style="display:none;">🎂 FELIZ CUMPLEAÑOS!! 💖</h1>
+      <h2 id="texto-guia" style="display:none;">🎁 Abre algún regalo 🎁</h2>
+
+      <!-- Diálogo chico -->
+      <div id="dialogo-chico" class="dialogo" style="display:none;">
+        Menudo publico
+      </div>
+
+      <!-- Diálogo chica -->
+      <div id="dialogo-chica" class="dialogo" style="display:none;">
+        Soy emilia JKSJD🎇
+      </div>
+
+      <!-- NUEVOS DIÁLOGOS LATERALES -->
+      <div id="dialogo-izq" class="dialogo dialogo-lateral" style="display:none;">
+        Geral no me mires asi..
+      </div>
+
+      <div id="dialogo-der" class="dialogo dialogo-lateral" style="display:none;">
+        Abre algún regalo<br>
+        o abro a maty
+      </div>
+
+      <!-- BOTONES: encima de tus círculos verdes -->
+      <!-- Regalo 1: izquierda -->
+      <div class="interactivo boton" style="left: 17%; top: 94%;" onclick="abrirRegalo(1)"></div>
+
+      <!-- Regalo 2: centro -->
+      <div class="interactivo boton" style="left: 48%; top: 84%;" onclick="abrirRegalo(2)"></div>
+
+      <!-- Regalo 3: derecha -->
+      <div class="interactivo boton" style="left: 79%; top: 94%;" onclick="abrirRegalo(3)"></div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- MODAL CARTA (REGALO 1) -->
+    <!-- ========================= -->
+    <div id="modal-regalo1" class="modal" aria-hidden="true" onclick="cerrarRegalo1()">
+      <button class="btn-regresar" onclick="cerrarRegalo1(); event.stopPropagation();">← Regresar</button>
+
+      <div class="carta" onclick="event.stopPropagation()">
+        <div class="carta-decor carta-decor-1">💗</div>
+        <div class="carta-decor carta-decor-2">✨</div>
+        <div class="carta-decor carta-decor-3">🎀</div>
+        <div class="carta-decor carta-decor-4">🌷</div>
+
+        <h2 class="carta-titulo">Para mi Lucia 💕</h2>
+
+        <p class="carta-texto">
+          Feliz cumpleaños, mi amor 🎂💖<br><br>
+          Hoy celebramos <b>tu</b> día y también todo lo que somos juntos.
+          Ya vamos <b>1 año</b> y este es mi <b>segundo cumpleaños contigo</b>, y todavía me sorprende lo bonito que es tenerte cerca 🥺✨.<br><br>
+
+          Gracias por cada momento: los días felices, las risas, los abrazos y también por esas peleitas que supimos superar,
+          porque al final siempre elegimos cuidarnos y seguir 💪❤️.<br><br>
+
+          Te quiero muchísimo, Lucia. Eres mi lugar favorito, mi paz y mi motivación.
+          Que este nuevo año de tu vida te traiga cositas lindas, sueños cumplidos y muchas razones para sonreír 🌟
+          PTT: MI SEGUNDA PAGINA WEB ASIQ NO ME JUZGUESSSS uwu .<br><br>
+
+          <b>Feliz cumple, bb.</b> Siempre contigo 💞
+        </p>
+      </div>
+    </div>
+
+    <!-- ========================= -->
+    <!-- MODAL VIDEO (REGALO 2) -->
+    <!-- ========================= -->
+    <div id="modal-regalo2" class="modal" aria-hidden="true" onclick="cerrarRegalo2()">
+      <button class="btn-regresar" onclick="cerrarRegalo2(); event.stopPropagation();">← Regresar</button>
+
+      <div class="carta video-card" onclick="event.stopPropagation()">
+
+        <h2 class="video-titulo">Un video para Gomita ❤️</h2>
+
+        <div class="video-wrap">
+          <!-- ✅ YouTube embebido (mismo tamaño / mismas clases) -->
+          <iframe
+            id="yt-regalo2"
+            class="video-player"
+            src="https://www.youtube.com/embed/yt-dWvzNnbo"
+            title="Un video para Gomita ❤️"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <h3 class="video-subtitulo">Otras creaciones de mi para ti</h3>
+
+        <div class="links-regalo">
+          <a class="btn-link" href="https://www.canva.com/design/DAGtWHuQWmU/yFQkHZ0VzMo9mVHeYkpUXg/watch?utm_content=DAGtWHuQWmU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0ab2aec8ba"
+             target="_blank" rel="noopener">
+            🎨 Canva
+          </a>
+
+          <a class="btn-link" href="https://leopardovm.github.io/Amorr/"
+             target="_blank" rel="noopener">
+            🌐 Web
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================= -->
+    <!-- ESCENA CARTAS (REGALO 3) -->
+    <!-- ========================= -->
+    <div id="escena-cartas" class="escena escena-cartas oculto">
+
+      <button class="btn-regresar-izq" onclick="volverAlConcierto()">← Regresar</button>
+
+      <h1 id="titulo-cartas">Lo que quiero hacer contigo</h1>
+
+      <!-- 6 botones "Abrir" (ajusta left/top si hace falta) -->
+      <button class="btn-abrir-carta" style="left: 22%; top: 53%;" onclick="abrirCarta(1)">Abrir</button>
+      <button class="btn-abrir-carta" style="left: 49%; top: 53%;" onclick="abrirCarta(2)">Abrir</button>
+      <button class="btn-abrir-carta" style="left: 77%; top: 53%;" onclick="abrirCarta(3)">Abrir</button>
+
+      <button class="btn-abrir-carta" style="left: 20%; top: 89%;" onclick="abrirCarta(4)">Abrir</button>
+      <button class="btn-abrir-carta" style="left: 50%; top: 89%;" onclick="abrirCarta(5)">Abrir</button>
+      <button class="btn-abrir-carta" style="left: 77%; top: 89%;" onclick="abrirCarta(6)">Abrir</button>
+    </div>
+
+    <!-- ========================= -->
+    <!-- MODAL CARTAS (GIFs) -->
+    <!-- ========================= -->
+    <div id="modal-cartas" class="modal" aria-hidden="true" onclick="cerrarCarta()">
+      <button class="btn-cerrar-x" onclick="cerrarCarta(); event.stopPropagation();">✕</button>
+
+      <div class="carta-gif-wrap" onclick="event.stopPropagation()">
+        <img id="img-carta" class="carta-gif" src="" alt="Carta">
+      </div>
+    </div>
+
+  </div>
+
+  <audio id="musica-fondo" src="assets/cancion.mp3" loop></audio>
+  <script src="script.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+}
+
+/* Contenedor */
+#contenedor-web {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Escenas */
+.escena {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+.escena-ojos { background-image: url("assets/ojos.gif"); }
+.escena-concierto { background-image: url("assets/escena1.gif"); }
+.escena-cartas { background-image: url("assets/cartas.gif"); }
+
+.oculto { display: none; }
+
+/* Interactivos */
+.interactivo {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.interactivo::after {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(255,255,255,0.85);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulso 1.4s infinite;
+}
+
+@keyframes pulso {
+  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
+}
+
+.boton {
+  width: 64px;
+  height: 64px;
+  transform: translate(-50%, -50%);
+}
+
+/* Pita */
+#pita-zona { top: 0; right: 5%; width: 40px; height: 350px; }
+#cordon { width: 4px; height: 280px; background: #777; margin: 0 auto; }
+#tirador { width: 22px; height: 40px; background: #444; border-radius: 5px; margin: 0 auto; }
+
+.subir-persiana { animation: subir 1.5s ease-in forwards; }
+@keyframes subir {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-400px); opacity: 0; }
+}
+
+#globo-ayuda {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  background: white;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  width: 160px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* ========================= */
+/* TEXTO CANDY */
+/* ========================= */
+#texto-sorpresa, #texto-feliz, #titulo-cartas {
+  text-align: center;
+  font-family: Arial Black, Arial, sans-serif;
+  letter-spacing: 2px;
+
+  background: repeating-linear-gradient(
+    45deg,
+    #ff4d6d 0 14px,
+    #ffa94d 14px 28px,
+    #ffe66d 28px 42px,
+    #6dffb5 42px 56px,
+    #4dabff 56px 70px,
+    #b197fc 70px 84px
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 6px rgba(255,255,255,0.95);
+  text-shadow:
+    0 6px 0 rgba(0,0,0,0.25),
+    0 12px 22px rgba(0,0,0,0.40);
+}
+
+/* SORPRESA */
+#texto-sorpresa {
+  position: absolute;
+  top: 6%;
+  width: 100%;
+  font-size: 78px;
+  animation: aparecerDesaparecer 3s forwards;
+}
+
+@keyframes aparecerDesaparecer {
+  0% { opacity: 0; transform: scale(0.55); }
+  20% { opacity: 1; transform: scale(1); }
+  75% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0; transform: scale(1.12); }
+}
+
+/* FELIZ */
+#texto-feliz {
+  position: absolute;
+  top: 6%;
+  width: 100%;
+  font-size: 78px;
+  animation: palpitar 1.2s ease-in-out infinite;
+}
+
+@keyframes palpitar {
+  0%   { transform: scale(1); opacity: 0.95; }
+  50%  { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.95; }
+}
+
+/* GUIA */
+#texto-guia {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  text-align: center;
+
+  font-size: 34px;
+  font-family: Arial Black, Arial, sans-serif;
+
+  background: repeating-linear-gradient(
+    45deg,
+    #ffb3c6 0 12px,
+    #ffd6a5 12px 24px,
+    #fdffb6 24px 36px,
+    #caffbf 36px 48px,
+    #9bf6ff 48px 60px,
+    #bdb2ff 60px 72px
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 3px rgba(255,255,255,0.9);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.35);
+
+  animation: palpitar-suave 1.6s ease-in-out infinite;
+}
+
+@keyframes palpitar-suave {
+  0%   { transform: scale(1); opacity: 0.85; }
+  50%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.85; }
+}
+
+/* ========================= */
+/* DIÁLOGOS */
+/* ========================= */
+.dialogo {
+  position: absolute;
+  background: white;
+  padding: 10px 18px;
+  border-radius: 18px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  z-index: 15;
+}
+
+#dialogo-chico { left: 47%; top: 32%; transform: translateX(-50%); }
+#dialogo-chica { left: 54%; top: 39%; transform: translateX(-50%); }
+
+.dialogo-lateral {
+  top: 60%;
+  width: 220px;
+  text-align: center;
+}
+#dialogo-izq { left: 18%; transform: translateX(-50%); }
+#dialogo-der { left: 82%; transform: translateX(-50%); }
+
+.dialogo::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* ========================= */
+/* MODALES + BLUR */
+/* ========================= */
+.blur-activo #escena-ojos,
+.blur-activo #escena-concierto {
+  filter: blur(6px);
+  transform: scale(1.01);
+}
+
+/* blur exclusivo para escena-cartas */
+.blur-cartas #escena-cartas {
+  filter: blur(6px);
+  transform: scale(1.01);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0,0,0,0.35);
+}
+
+.modal.activo { display: flex; }
+
+.btn-regresar {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.45);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 60;
+}
+
+.carta {
+  width: min(1100px, 96vw);
+  max-height: 88vh;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.96);
+  border: 3px solid #ff7bbf;
+  border-radius: 26px;
+  padding: 26px 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  position: relative;
+}
+
+.carta-titulo {
+  margin: 0 0 12px;
+  font-family: Arial Black, Arial, sans-serif;
+  color: #ff2f93;
+  text-align: center;
+}
+
+.carta-texto {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  color: #222;
+}
+
+.carta-decor { position: absolute; font-size: 22px; opacity: 0.9; }
+.carta-decor-1 { top: 12px; left: 16px; }
+.carta-decor-2 { top: 12px; right: 16px; }
+.carta-decor-3 { bottom: 14px; left: 18px; }
+.carta-decor-4 { bottom: 14px; right: 18px; }
+
+/* ========================= */
+/* REGALO 2 VIDEO */
+/* ========================= */
+.video-card { text-align: center; }
+
+.video-titulo{
+  margin: 0 0 14px;
+  font-family: Arial Black, Arial, sans-serif;
+  color: #ff1d1d;
+  font-size: 32px;
+}
+
+.video-subtitulo{
+  margin: 16px 0 12px;
+  font-family: Arial Black, Arial, sans-serif;
+  color: #ff2f93;
+  font-size: 22px;
+}
+
+.video-wrap { width: 100%; display: flex; justify-content: center; }
+
+.video-player {
+  width: min(1000px, 96vw);  /* más ancho */
+  height: 56vh;              /* fuerza altura real */
+  max-height: 65vh;
+  border-radius: 18px;
+  background: #000;
+  box-shadow: 0 12px 45px rgba(0,0,0,0.35);
+}
+
+.links-regalo {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  background: #ff7bbf;
+  color: white;
+  border: 2px solid #ff2f93;
+  box-shadow: 0 8px 20px rgba(255, 47, 147, 0.25);
+}
+
+/* ========================= */
+/* ESCENA CARTAS (REGALO 3) */
+/* ========================= */
+
+/* titulo arriba centrado */
+#titulo-cartas{
+  position: absolute;
+  top: 4%;
+  width: 100%;
+  font-size: 64px;
+  animation: palpitar 1.2s ease-in-out infinite;
+}
+
+/* boton regresar izquierda */
+.btn-regresar-izq{
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.45);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 60;
+}
+
+/* botones "Abrir" debajo de cada sobre */
+.btn-abrir-carta{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.45);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+
+/* ========================= */
+/* MODAL GIF CARTAS */
+/* ========================= */
+.carta-gif-wrap{
+  width: min(900px, 92vw);
+  max-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carta-gif{
+  width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 18px;
+  border: 3px solid #ff7bbf;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  background: rgba(255,255,255,0.05);
+}
+
+.btn-cerrar-x{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.55);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 60;
+}
